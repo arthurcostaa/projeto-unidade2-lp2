@@ -51,6 +51,23 @@ public class Professor extends Person implements Employee {
 
     @Override
     public Double calculateSalary() {
-        return null;
+        final double BASE_SALARY = 4000;
+        double salary = BASE_SALARY;
+
+        salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
+
+        switch (degree) {
+            case Degree.SPECIALIZATION:
+                salary += BASE_SALARY * 0.25;
+                break;
+            case Degree.MASTER:
+                salary += BASE_SALARY * 0.5;
+                break;
+            case Degree.DOCTORATE:
+                salary += BASE_SALARY * 0.75;
+                break;
+        }
+
+        return salary;
     }
 }
