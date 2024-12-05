@@ -20,6 +20,6 @@ public class DatabaseDAO {
     }
 
     public ArrayList<Person> getEmployees() {
-        return employees;
+        return this.employees;
     }
 }

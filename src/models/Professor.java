@@ -13,6 +13,17 @@ public class Professor extends Person implements Employee {
     private Degree degree;
     private List<String> classes;
 
+    public Professor() {
+    }
+
+    public Professor(String name, String cpf, LocalDate dateOfBirth,
+                        Gender gender, Address address,
+                        Long registrationNumber, Double salary,
+                        String department, Integer workload,
+                        LocalDate entryDate) {
+        super(name, cpf, dateOfBirth, gender, address, registrationNumber, salary, department, workload, entryDate);
+    }
+
     public Professor(String name, String cpf, LocalDate dateOfBirth,
                      Gender gender, Address address, Long registrationNumber,
                      Double salary, String department, Integer workload,
@@ -57,13 +68,13 @@ public class Professor extends Person implements Employee {
         salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
 
         switch (degree) {
-            case Degree.SPECIALIZATION:
+            case SPECIALIZATION:
                 salary += BASE_SALARY * 0.25;
                 break;
-            case Degree.MASTER:
+            case MASTER:
                 salary += BASE_SALARY * 0.5;
                 break;
-            case Degree.DOCTORATE:
+            case DOCTORATE:
                 salary += BASE_SALARY * 0.75;
                 break;
         }

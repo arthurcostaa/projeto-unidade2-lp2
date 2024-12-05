@@ -1,6 +1,5 @@
 package models;
 
-import com.sun.source.tree.ReturnTree;
 import enums.Degree;
 import enums.Gender;
 import enums.Level;
@@ -70,13 +69,13 @@ public class AdministrativeTechnician extends Person implements Employee {
         salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
 
         switch (degree) {
-            case Degree.SPECIALIZATION:
+            case SPECIALIZATION:
                 salary += BASE_SALARY * 0.25;
                 break;
-            case Degree.MASTER:
+            case MASTER:
                 salary += BASE_SALARY * 0.5;
                 break;
-            case Degree.DOCTORATE:
+            case DOCTORATE:
                 salary += BASE_SALARY * 0.75;
                 break;
         }

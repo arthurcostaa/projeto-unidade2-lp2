@@ -16,6 +16,9 @@ public abstract class Person {
     private Integer workload;
     private LocalDate entryDate;
 
+    public Person() {
+    }
+
     public Person(String name, String cpf, LocalDate dateOfBirth,
                   Gender gender, Address address, Long registrationNumber,
                   Double salary, String department, Integer workload,
@@ -114,6 +117,6 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return name;
+        return name + " - " + cpf + " - " + this.getDepartment();
     }
 }
