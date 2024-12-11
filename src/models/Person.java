@@ -114,9 +114,4 @@ public abstract class Person {
     public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
-
-    @Override
-    public String toString() {
-        return name + " - " + cpf + " - " + this.getDepartment();
-    }
 }

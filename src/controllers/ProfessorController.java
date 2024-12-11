@@ -5,7 +5,7 @@ import models.Person;
 import models.Professor;
 
 public class ProfessorController {
-    public static DatabaseDAO db = DatabaseDAO.getInstance();
+    private static DatabaseDAO db = DatabaseDAO.getInstance();
 
     private Professor findProfessorByRegistrationNumber(int registrationNumber) {
         for (Person p : db.getEmployees()) {
@@ -18,16 +18,22 @@ public class ProfessorController {
 
     public void createProfessor() {}
 
-    public void listProfessor() {
+    public void listProfessors() {
         System.out.println("=======================");
         System.out.println("PROFESSORES CADASTRADOS");
         System.out.println("=======================");
 
         for (Person p : db.getEmployees()) {
-            if (p instanceof Professor) {
-                System.out.println(p);
+            if (p instanceof Professor prof) {
+                System.out.println(prof.getName());
+                System.out.println("DISCIPLINAS MINISTRADAS\n");
+                for (String classes : prof.getClasses()) {
+                    System.out.println(classes);
+                }
+                System.out.println();
             }
         }
+
         System.out.println("=======================");
     }
 

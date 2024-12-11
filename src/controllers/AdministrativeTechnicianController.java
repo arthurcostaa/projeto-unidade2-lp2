@@ -5,7 +5,7 @@ import models.AdministrativeTechnician;
 import models.Person;
 
 public class AdministrativeTechnicianController {
-    public static DatabaseDAO db = DatabaseDAO.getInstance();
+    private static DatabaseDAO db = DatabaseDAO.getInstance();
 
     private AdministrativeTechnician findAdminTechByRegistrationNumber(int registrationNumber) {
         for (Person p : db.getEmployees()) {
@@ -24,10 +24,13 @@ public class AdministrativeTechnicianController {
         System.out.println("====================================");
 
         for (Person p : db.getEmployees()) {
-            if (p instanceof AdministrativeTechnician) {
-                System.out.println(p);
+            if (p instanceof AdministrativeTechnician adminTech) {
+                System.out.println(
+                        adminTech.getName() + " - " + adminTech.getDepartment()
+                );
             }
         }
+
         System.out.println("====================================");
     }
 

@@ -67,18 +67,7 @@ public class AdministrativeTechnician extends Person implements Employee {
         double salary = BASE_SALARY;
 
         salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
-
-        switch (degree) {
-            case SPECIALIZATION:
-                salary += BASE_SALARY * 0.25;
-                break;
-            case MASTER:
-                salary += BASE_SALARY * 0.5;
-                break;
-            case DOCTORATE:
-                salary += BASE_SALARY * 0.75;
-                break;
-        }
+        salary += BASE_SALARY * degree.getDegree();
 
         if (unhealthiness) {
             salary += BASE_SALARY * 0.5;
