@@ -13,6 +13,9 @@ public class AdministrativeTechnician extends Person implements Employee {
     private Boolean unhealthiness;
     private Boolean bonusPosition;
 
+    public AdministrativeTechnician() {
+    }
+
     public AdministrativeTechnician(String name, String cpf,
                                     LocalDate dateOfBirth, Gender gender,
                                     Address address, Long registrationNumber,
@@ -78,5 +81,10 @@ public class AdministrativeTechnician extends Person implements Employee {
         }
 
         return salary;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + " - " + this.getDepartment();
     }
 }

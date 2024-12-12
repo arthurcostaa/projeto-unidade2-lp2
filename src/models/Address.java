@@ -2,12 +2,15 @@ package models;
 
 public class Address {
     private String street;
-    private Integer number;
+    private String number;
     private String neighborhood;
     private String city;
     private String cep;
 
-    public Address(String street, Integer number, String neighborhood,
+    public Address() {
+    }
+
+    public Address(String street, String number, String neighborhood,
                    String city, String cep) {
         this.street = street;
         this.number = number;
@@ -24,11 +27,11 @@ public class Address {
         this.street = street;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
