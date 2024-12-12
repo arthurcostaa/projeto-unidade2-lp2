@@ -22,11 +22,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean running = true;
-        int answer;
 
         while (running) {
             showMenu();
-            answer = scan.nextInt();
+            int answer = scan.nextInt();
 
             switch (answer) {
                 case 0:
@@ -43,6 +42,24 @@ public class Main {
                     break;
                 case 4:
                     AdministrativeTechnicianController.listAdministrativeTechnician();
+                    break;
+                case 5:
+                    ProfessorController.deleteProfessor();
+                    break;
+                case 6:
+                    AdministrativeTechnicianController.deleteAdministrativeTechnician();
+                    break;
+                case 7:
+                    ProfessorController.searchProfessor();
+                    break;
+                case 8:
+                    AdministrativeTechnicianController.searchAdministrativeTechnician();
+                    break;
+                case 9:
+                    ProfessorController.calculateSalaryProfessor();
+                    break;
+                case 10:
+                    AdministrativeTechnicianController.calculateSalaryAdministrativeTechnician();
                     break;
                 default:
                     System.out.println("Opção inválida. Tenten novamente.");

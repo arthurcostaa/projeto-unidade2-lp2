@@ -5,8 +5,11 @@ import models.AdministrativeTechnician;
 import models.Person;
 import utils.InputReader;
 
+import java.util.Scanner;
+
 public class AdministrativeTechnicianController {
     private static DatabaseDAO db = DatabaseDAO.getInstance();
+    private static Scanner scan = new Scanner(System.in);
 
     private static AdministrativeTechnician findAdminTechByRegistrationNumber(int registrationNumber) {
         for (Person p : db.getEmployees()) {
@@ -27,10 +30,7 @@ public class AdministrativeTechnicianController {
         InputReader.readWorkInfo(adminTech);
         adminTech.setDegree(InputReader.readDegree());
         adminTech.setUnhealthiness(InputReader.readYesNoQuestion("Insalubridade (S/N):"));
-        System.out.println(adminTech.getUnhealthiness());
         adminTech.setBonusPosition(InputReader.readYesNoQuestion("Função gratificada (S/N):"));
-        System.out.println(adminTech.getBonusPosition());
-
 
         db.getEmployees().add(adminTech);
         System.out.println("Técnico administrativo cadastrado com sucesso.");
@@ -50,7 +50,10 @@ public class AdministrativeTechnicianController {
         System.out.println("====================================");
     }
 
-    public static void deleteAdministrativeTechnician(int registrationNumber) {
+    public static void deleteAdministrativeTechnician() {
+        System.out.println("Código do técnico administrativo:");
+        int registrationNumber = scan.nextInt();
+
         AdministrativeTechnician adminTech = findAdminTechByRegistrationNumber(registrationNumber);
 
         if (adminTech == null) {
@@ -61,7 +64,10 @@ public class AdministrativeTechnicianController {
         db.getEmployees().remove(adminTech);
     }
 
-    public static void searchAdministrativeTechnician(int registrationNumber) {
+    public static void searchAdministrativeTechnician() {
+        System.out.println("Código do técnico administrativo:");
+        int registrationNumber = scan.nextInt();
+
         AdministrativeTechnician adminTech = findAdminTechByRegistrationNumber(registrationNumber);
 
         if (adminTech == null) {
@@ -70,5 +76,19 @@ public class AdministrativeTechnicianController {
         }
 
         System.out.println(adminTech);
+    }
+
+    public static void calculateSalaryAdministrativeTechnician() {
+        System.out.println("Código do técnico administrativo:");
+        int registrationNumber = scan.nextInt();
+
+        AdministrativeTechnician adminTech = findAdminTechByRegistrationNumber(registrationNumber);
+
+        if (adminTech == null) {
+            System.out.println("Técnico Administrativo não encontrado.");
+            return;
+        }
+
+        System.out.println("O salário do técnico administrativo é " + adminTech.calculateSalary());
     }
 }

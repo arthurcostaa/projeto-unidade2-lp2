@@ -84,8 +84,6 @@ public class InputReader {
     public static void readWorkInfo(Person person) {
         System.out.println("Matrícula:");
         person.setRegistrationNumber(scan.nextLong());
-        System.out.println("Salário:");
-        person.setSalary(scan.nextDouble());
         scan.nextLine();
         System.out.println("Departamento:");
         person.setDepartment(scan.nextLine());

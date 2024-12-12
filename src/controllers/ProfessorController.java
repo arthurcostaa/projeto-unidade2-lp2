@@ -42,8 +42,8 @@ public class ProfessorController {
 
         for (Person p : db.getEmployees()) {
             if (p instanceof Professor prof) {
-                System.out.println(prof.getName());
-                System.out.println("\tDISCIPLINAS MINISTRADAS\n");
+                System.out.println(prof);
+                System.out.println("DISCIPLINAS MINISTRADAS");
                 for (String classes : prof.getClasses()) {
                     System.out.println("\t" + classes);
                 }
@@ -54,23 +54,45 @@ public class ProfessorController {
         System.out.println("=======================");
     }
 
-    public static void deleteProfessor(int registrationNumber) {
+    public static void deleteProfessor() {
+        System.out.println("Código do professor:");
+        int registrationNumber = scan.nextInt();
+
         Professor prof = findProfessorByRegistrationNumber(registrationNumber);
 
         if (prof == null) {
             System.out.println("Professor não encontrado.");
+            return;
         }
 
         db.getEmployees().remove(prof);
     }
 
-    public static void searchProfessor(int registrationNumber) {
+    public static void searchProfessor() {
+        System.out.println("Código do professor:");
+        int registrationNumber = scan.nextInt();
+
         Professor prof = findProfessorByRegistrationNumber(registrationNumber);
 
         if (prof == null) {
             System.out.println("Professor não encontrado.");
+            return;
         }
 
         System.out.println(prof);
+    }
+
+    public static void calculateSalaryProfessor() {
+        System.out.println("Código do professor:");
+        int registrationNumber = scan.nextInt();
+
+        Professor prof = findProfessorByRegistrationNumber(registrationNumber);
+
+        if (prof == null) {
+            System.out.println("Professor não encontrado.");
+            return;
+        }
+
+        System.out.println("O salário do professor é " + prof.calculateSalary());
     }
 }

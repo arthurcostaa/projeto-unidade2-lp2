@@ -1,5 +1,6 @@
 package models;
 
+import constants.SalaryConstants;
 import enums.Degree;
 import enums.Gender;
 import enums.Level;
@@ -7,6 +8,9 @@ import interfaces.Employee;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import static constants.SalaryConstants.PROFESSOR_BASE_SALARY;
+import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
 
 public class Professor extends Person implements Employee {
     private Level level;
@@ -18,11 +22,11 @@ public class Professor extends Person implements Employee {
 
     public Professor(String name, String cpf, LocalDate dateOfBirth,
                      Gender gender, Address address,
-                     Long registrationNumber, Double salary,
-                     String department, Integer workload,
-                     LocalDate entryDate) {
+                     Long registrationNumber, String department,
+                     Integer workload, LocalDate entryDate) {
         super(name, cpf, dateOfBirth, gender, address, registrationNumber,
-                salary, department, workload, entryDate);
+                PROFESSOR_BASE_SALARY, department, workload,
+                entryDate);
     }
 
     public Professor(String name, String cpf, LocalDate dateOfBirth,
@@ -63,12 +67,16 @@ public class Professor extends Person implements Employee {
 
     @Override
     public Double calculateSalary() {
-        final double BASE_SALARY = 4000;
-        double salary = BASE_SALARY;
-
-        salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
-        salary += BASE_SALARY * degree.getDegree();
+        double salary =
+                PROFESSOR_BASE_SALARY * Math.pow(1 + PERCENTAGE_BY_LEVEL,
+                        level.getLevel());
+        salary += PROFESSOR_BASE_SALARY * degree.getDegree();
 
         return salary;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + " - " + this.getRegistrationNumber();
     }
 }

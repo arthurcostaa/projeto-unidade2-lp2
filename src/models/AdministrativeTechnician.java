@@ -1,11 +1,15 @@
 package models;
 
+import constants.SalaryConstants;
 import enums.Degree;
 import enums.Gender;
 import enums.Level;
 import interfaces.Employee;
 
 import java.time.LocalDate;
+
+import static constants.SalaryConstants.ADMINISTRATIVE_TECHNICIAN_BASE_SALARY;
+import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
 
 public class AdministrativeTechnician extends Person implements Employee {
     private Level level;
@@ -19,13 +23,14 @@ public class AdministrativeTechnician extends Person implements Employee {
     public AdministrativeTechnician(String name, String cpf,
                                     LocalDate dateOfBirth, Gender gender,
                                     Address address, Long registrationNumber,
-                                    Double salary, String department,
+                                    String department,
                                     Integer workload, LocalDate entryDate,
                                     Level level, Degree degree,
                                     Boolean unhealthiness,
                                     Boolean bonusPosition) {
         super(name, cpf, dateOfBirth, gender, address, registrationNumber,
-                salary, department, workload, entryDate);
+                ADMINISTRATIVE_TECHNICIAN_BASE_SALARY,
+                department, workload, entryDate);
         this.level = level;
         this.degree = degree;
         this.unhealthiness = unhealthiness;
@@ -66,18 +71,16 @@ public class AdministrativeTechnician extends Person implements Employee {
 
     @Override
     public Double calculateSalary() {
-        final double BASE_SALARY = 2500;
-        double salary = BASE_SALARY;
-
-        salary = BASE_SALARY * Math.pow(1.05, level.getLevel());
-        salary += BASE_SALARY * degree.getDegree();
+        double salary =
+            ADMINISTRATIVE_TECHNICIAN_BASE_SALARY * Math.pow(1 + PERCENTAGE_BY_LEVEL, level.getLevel());
+        salary += ADMINISTRATIVE_TECHNICIAN_BASE_SALARY * degree.getDegree();
 
         if (unhealthiness) {
-            salary += BASE_SALARY * 0.5;
+            salary += ADMINISTRATIVE_TECHNICIAN_BASE_SALARY * 0.5;
         }
 
         if (bonusPosition) {
-            salary += BASE_SALARY * 0.5;
+            salary += ADMINISTRATIVE_TECHNICIAN_BASE_SALARY * 0.5;
         }
 
         return salary;
