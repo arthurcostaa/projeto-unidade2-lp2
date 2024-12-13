@@ -1,5 +1,6 @@
 import controllers.AdministrativeTechnicianController;
 import controllers.ProfessorController;
+import database.DatabaseDAO;
 
 import java.util.Scanner;
 
@@ -20,8 +21,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        DatabaseDAO db = DatabaseDAO.getInstance();
         Scanner scan = new Scanner(System.in);
         boolean running = true;
+
+        db.readData();
 
         while (running) {
             showMenu();
@@ -30,6 +34,7 @@ public class Main {
             switch (answer) {
                 case 0:
                     running = false;
+                    db.saveData();
                     break;
                 case 1:
                     ProfessorController.createProfessor();

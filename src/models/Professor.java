@@ -1,18 +1,18 @@
 package models;
 
-import constants.SalaryConstants;
 import enums.Degree;
 import enums.Gender;
 import enums.Level;
 import interfaces.Employee;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import static constants.SalaryConstants.PROFESSOR_BASE_SALARY;
 import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
+import static constants.SalaryConstants.PROFESSOR_BASE_SALARY;
 
-public class Professor extends Person implements Employee {
+public class Professor extends Person implements Employee, Serializable {
     private Level level;
     private Degree degree;
     private List<String> classes;
@@ -20,22 +20,12 @@ public class Professor extends Person implements Employee {
     public Professor() {
     }
 
-    public Professor(String name, String cpf, LocalDate dateOfBirth,
-                     Gender gender, Address address,
-                     Long registrationNumber, String department,
-                     Integer workload, LocalDate entryDate) {
-        super(name, cpf, dateOfBirth, gender, address, registrationNumber,
-                PROFESSOR_BASE_SALARY, department, workload,
-                entryDate);
-    }
-
-    public Professor(String name, String cpf, LocalDate dateOfBirth,
+    public Professor(String name, String cpf, LocalDate birthDate,
                      Gender gender, Address address, Long registrationNumber,
-                     Double salary, String department, Integer workload,
-                     LocalDate entryDate, Level level, Degree degree,
-                     List<String> classes) {
-        super(name, cpf, dateOfBirth, gender, address, registrationNumber,
-                salary, department, workload, entryDate);
+                     String department, Integer workload, LocalDate entryDate,
+                     Level level, Degree degree, List<String> classes) {
+        super(name, cpf, birthDate, gender, address, registrationNumber,
+                PROFESSOR_BASE_SALARY, department, workload, entryDate);
         this.level = level;
         this.degree = degree;
         this.classes = classes;
@@ -73,10 +63,5 @@ public class Professor extends Person implements Employee {
         salary += PROFESSOR_BASE_SALARY * degree.getDegree();
 
         return salary;
-    }
-
-    @Override
-    public String toString() {
-        return this.getName() + " - " + this.getRegistrationNumber();
     }
 }

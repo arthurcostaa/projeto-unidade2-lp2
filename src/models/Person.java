@@ -2,12 +2,13 @@ package models;
 
 import enums.Gender;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
     private String name;
     private String cpf;
-    private LocalDate dateOfBirth;
+    private LocalDate birthDate;
     private Gender gender;
     private Address address;
     private Long registrationNumber;
@@ -19,13 +20,13 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String cpf, LocalDate dateOfBirth,
+    public Person(String name, String cpf, LocalDate birthDate,
                   Gender gender, Address address, Long registrationNumber,
                   Double salary, String department, Integer workload,
                   LocalDate entryDate) {
         this.name = name;
         this.cpf = cpf;
-        this.dateOfBirth = dateOfBirth;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.address = address;
         this.registrationNumber = registrationNumber;
@@ -51,12 +52,12 @@ public abstract class Person {
         this.cpf = cpf;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Gender getGender() {
@@ -113,5 +114,10 @@ public abstract class Person {
 
     public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
+    }
+
+    @Override
+    public String toString() {
+        return name + " - " + registrationNumber + " - " + department;
     }
 }

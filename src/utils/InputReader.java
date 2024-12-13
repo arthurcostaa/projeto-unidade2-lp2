@@ -60,7 +60,7 @@ public class InputReader {
         person.setName(scan.nextLine());
         System.out.println("CPF:");
         person.setCpf(scan.nextLine());
-        person.setDateOfBirth(readDate("Data de nascimento (AAAA-MM-DD)"));
+        person.setBirthDate(readDate("Data de nascimento (AAAA-MM-DD)"));
         person.setGender(readGender());
     }
 

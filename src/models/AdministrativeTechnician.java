@@ -1,17 +1,17 @@
 package models;
 
-import constants.SalaryConstants;
 import enums.Degree;
 import enums.Gender;
 import enums.Level;
 import interfaces.Employee;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import static constants.SalaryConstants.ADMINISTRATIVE_TECHNICIAN_BASE_SALARY;
 import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
 
-public class AdministrativeTechnician extends Person implements Employee {
+public class AdministrativeTechnician extends Person implements Employee, Serializable {
     private Level level;
     private Degree degree;
     private Boolean unhealthiness;
@@ -21,14 +21,14 @@ public class AdministrativeTechnician extends Person implements Employee {
     }
 
     public AdministrativeTechnician(String name, String cpf,
-                                    LocalDate dateOfBirth, Gender gender,
+                                    LocalDate birthDate, Gender gender,
                                     Address address, Long registrationNumber,
                                     String department,
                                     Integer workload, LocalDate entryDate,
                                     Level level, Degree degree,
                                     Boolean unhealthiness,
                                     Boolean bonusPosition) {
-        super(name, cpf, dateOfBirth, gender, address, registrationNumber,
+        super(name, cpf, birthDate, gender, address, registrationNumber,
                 ADMINISTRATIVE_TECHNICIAN_BASE_SALARY,
                 department, workload, entryDate);
         this.level = level;
@@ -84,10 +84,5 @@ public class AdministrativeTechnician extends Person implements Employee {
         }
 
         return salary;
-    }
-
-    @Override
-    public String toString() {
-        return this.getName() + " - " + this.getDepartment();
     }
 }
