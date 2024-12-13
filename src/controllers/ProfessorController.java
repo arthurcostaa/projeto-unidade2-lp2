@@ -28,6 +28,7 @@ public class ProfessorController {
         InputReader.readPersonalInfo(prof);
         prof.setAddress(InputReader.readAddress());
         InputReader.readWorkInfo(prof);
+        prof.setLevel(InputReader.readLevel());
         InputReader.readProfessorClasses(prof);
         prof.setDegree(InputReader.readDegree());
         db.getEmployees().add(prof);

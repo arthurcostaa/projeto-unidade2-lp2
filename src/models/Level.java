@@ -1,4 +1,4 @@
-package enums;
+package models;
 
 public enum Level {
     I(1),

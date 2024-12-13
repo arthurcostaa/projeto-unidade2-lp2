@@ -1,4 +1,4 @@
-package enums;
+package models;
 
 public enum Degree {
     SPECIALIZATION(0.25),

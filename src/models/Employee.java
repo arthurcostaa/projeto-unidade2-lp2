@@ -1,4 +1,4 @@
-package interfaces;
+package models;
 
 public interface Employee {
     Double calculateSalary();

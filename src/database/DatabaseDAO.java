@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class DatabaseDAO implements Serializable {
     private ArrayList<Person> employees;
     private static DatabaseDAO db;
-    private final String FILE_NAME = "./src/assets/database.db";
+    private final String FILE_NAME = "src/database/database.db";
 
     private DatabaseDAO() {
         this.employees = new ArrayList<>();
@@ -32,6 +32,7 @@ public class DatabaseDAO implements Serializable {
             output.writeObject(employees);
             output.close();
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Erro ao salvar o arquivo.");
         }
     }
@@ -43,6 +44,7 @@ public class DatabaseDAO implements Serializable {
             ObjectInputStream input = new ObjectInputStream(inputFile);
             this.employees = (ArrayList<Person>) input.readObject();
         } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
             System.out.println("Erro ao ler dados do sistema.");
         }
     }

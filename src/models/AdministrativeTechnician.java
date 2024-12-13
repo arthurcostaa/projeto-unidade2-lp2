@@ -1,15 +1,10 @@
 package models;
 
-import enums.Degree;
-import enums.Gender;
-import enums.Level;
-import interfaces.Employee;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import static constants.SalaryConstants.ADMINISTRATIVE_TECHNICIAN_BASE_SALARY;
-import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
+import static models.SalaryConstants.ADMINISTRATIVE_TECHNICIAN_BASE_SALARY;
+import static models.SalaryConstants.PERCENTAGE_BY_LEVEL;
 
 public class AdministrativeTechnician extends Person implements Employee, Serializable {
     private Level level;

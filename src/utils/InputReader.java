@@ -1,10 +1,6 @@
 package utils;
 
-import enums.Degree;
-import enums.Gender;
-import models.Address;
-import models.Person;
-import models.Professor;
+import models.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -51,6 +47,17 @@ public class InputReader {
                 return Degree.valueOf(scan.nextLine().toUpperCase());
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro ao ler formação. Tente novamente.");
+            }
+        }
+    }
+
+    public static Level readLevel() {
+        while (true) {
+            try {
+                System.out.println("Nível (I, II, III, IV, V, VI, VII, VII)");
+                return Level.valueOf(scan.nextLine().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Erro ao ler nível. Tente novamente.");
             }
         }
     }

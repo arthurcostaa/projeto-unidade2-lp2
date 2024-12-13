@@ -29,6 +29,7 @@ public class AdministrativeTechnicianController {
         adminTech.setAddress(InputReader.readAddress());
         InputReader.readWorkInfo(adminTech);
         adminTech.setDegree(InputReader.readDegree());
+        adminTech.setLevel(InputReader.readLevel());
         adminTech.setUnhealthiness(InputReader.readYesNoQuestion("Insalubridade (S/N):"));
         adminTech.setBonusPosition(InputReader.readYesNoQuestion("Função gratificada (S/N):"));
 

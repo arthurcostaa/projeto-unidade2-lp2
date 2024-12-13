@@ -1,16 +1,11 @@
 package models;
 
-import enums.Degree;
-import enums.Gender;
-import enums.Level;
-import interfaces.Employee;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import static constants.SalaryConstants.PERCENTAGE_BY_LEVEL;
-import static constants.SalaryConstants.PROFESSOR_BASE_SALARY;
+import static models.SalaryConstants.PERCENTAGE_BY_LEVEL;
+import static models.SalaryConstants.PROFESSOR_BASE_SALARY;
 
 public class Professor extends Person implements Employee, Serializable {
     private Level level;

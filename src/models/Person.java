@@ -1,7 +1,5 @@
 package models;
 
-import enums.Gender;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
